@@ -1,4 +1,4 @@
-# Medidas de 10 Aplicativos con OZM en dos dias
+# Medidas de 10 Aplicativos con OZM v2 en dos dias
 
 Este es el último repositorio de medidas con ozm v2, cuyas pruebas comenzaron el día 2023-03-07 y terminaron el día 2023-06-09 a las 13:36:19+02:00 en el Laboratorio de Electrotecnia de la Escuela de Ingeniería Industrial de la Universidad de Almería. En este repositorio se analizan medidas con 3 ozm trifásicos conformando en total 10 aplicativos más el agregado, todo estos durante 6 horas repartidas en dos días diferentes.
 
