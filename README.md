@@ -1,6 +1,6 @@
 # Medidas de 10 Aplicativos con OZM v2 en dos dias
 
-Este es el último repositorio de medidas con ozm v2, cuyas pruebas comenzaron el día 2023-03-07 y terminaron el día 2023-06-09 a las 13:36:19+02:00 en el Laboratorio de Electrotecnia de la Escuela de Ingeniería Industrial de la Universidad de Almería. En este repositorio se analizan medidas con 3 ozm trifásicos conformando en total 10 aplicativos más el agregado, todo estos durante 6 horas repartidas en dos días diferentes.
+Este es el último repositorio de medidas uando la nueva version de  oVm v2 ( versión trifásica de oZM), cuyas pruebas comenzaron el día 2023-03-07 y terminaron el día 2023-06-09 a las 13:36:19+02:00 en el Laboratorio de Electrotecnia de la Escuela de Ingeniería Industrial de la Universidad de Almería. En este repositorio se analizan medidas con 3 ozm trifásicos conformando en total 10 aplicativos más el agregado, todo estos durante 6 horas repartidas en dos días diferentes.
 
 Se presenta en los cuadernos adjuntos a este repositorio el análisis de las medidas de 10 aplicativos incluyendo transitorios hasta el orden 150 de tensión, corriente y potencia. Las Medidas se realizan con 3 OpenZmeter Trifásicos (cada uno con 4 canales de medida) conformando así en total 11 canales de medida que se distribuyen en los 10 aplicativos, más el agregado.
 
