@@ -1,84 +1,102 @@
-# Medidas de 10 Aplicativos con OZM v2 en dos dias
+**Measurements of 10 Applications with OZM v2 in two days**
 
-Este es el último repositorio de medidas uando la nueva version de  oVm v2 ( versión trifásica de oZM), cuyas pruebas comenzaron el día 2023-03-07 y terminaron el día 2023-06-09 a las 13:36:19+02:00 en el Laboratorio de Electrotecnia de la Escuela de Ingeniería Industrial de la Universidad de Almería. En este repositorio se analizan medidas con 3 ozm trifásicos conformando en total 10 aplicativos más el agregado, todo estos durante 6 horas repartidas en dos días diferentes.
+This is the last repository of measurements using the new version of oVm v2 (three-phase version of oZM), whose tests began on 2023-03-07 and ended on 2023-06-09 at 13:36:19+02:00 in the Electrical Engineering Laboratory of the School of Industrial Engineering of the University of Almeria. In this repository, measurements with 3 three-phase ozm are analysed, making up a total of 10 applications plus the aggregate, all of these during 6 hours spread over two different days.
 
-Se presenta en los cuadernos adjuntos a este repositorio el análisis de las medidas de 10 aplicativos incluyendo transitorios hasta el orden 150 de tensión, corriente y potencia. Las Medidas se realizan con 3 OpenZmeter Trifásicos (cada uno con 4 canales de medida) conformando así en total 11 canales de medida que se distribuyen en los 10 aplicativos, más el agregado.
 
-Las medidas corresponden a W, VAR, VA, f, VLN, PF y A, más los armónicos hasta el orden 50 de W, V y A, todas con una marca de tiempo (Timestamp) de 13 dígitos tipo UNIX Epox.
+The analysis of the measurements of 10 applications including transients up to order 150 of voltage, current and power is presented in the notebooks attached to this repository. The measurements are made with 3 three-phase OpenZmeters (each with 4 measurement channels), making a total of 11 measurement channels distributed among the 10 applications, plus the aggregate.
 
-Por tanto, en este nuevo repositorio se analiza el impacto de tomar un tiempo extra de entrenamiento del modelo contando con los armónicos hasta el orden 50 de la tensión, corriente y potencia que nos ofrece el OZM v2. Destacar que en los cuadernos de Jupyter Notebook adjuntos, no solo está el código en Python sino también los resultados de ejecutar sobre el dataset. Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset con los datos adicionales.
 
-**\*\*DEBIDO A SU AUN MAYOR TAMAÑO, POR SU EXTENSION, NO ESTAN DISPONIBLES LOS FICHEROS DE DATOS EN FORMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO TAMPOCO EL DATASET, PERO SI ESTA DISPONIBLE EN EL REPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS CON EL TIEMPO HABITUAL DE MUESTRAS. \*\***
+The measurements correspond to W, VAR, VA, f, VLN, PF and A, plus harmonics up to order 50 of W, V and A, all with a 13-digit UNIX Epox timestamp.
+Therefore, this new repository analyses the impact of taking extra time to train the model with the harmonics up to order 50 of the voltage, current and power provided by OZM v2. It should be noted that the attached Jupyter Notebooks contain not only the Python code but also the results of running the dataset. Also, to run this code we need to have the NILMTK toolkit installed (also available on Github), as well as the new dataset with the additional data.
 
-Nuestro objetivo es proporcionar a los investigadores de NILM nuevos repositorios de datos para ampliar el abanico existente. Dado que estos nuevos conjuntos de datos pueden contener más de 150 variables eléctricas registradas a alta frecuencia en diferentes aplicaciones de uso cotidiano, al ofrecer esta amplia gama de datos, esperamos impulsar y mejorar las investigaciones en el campo del NILM.
+**\*\*DUE TO ITS EVEN LARGER SIZE, THE CSV FORMAT DATA FILES ARE NOT AVAILABLE IN THIS PARTICULAR REPOSITORY, NOR IS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS WITH THE USUAL SAMPLING TIME IS AVAILABLE IN THE DSUALM10H REPOSITORY.. \*\***
 
-En este repositorio usamos 3 unidades OZM v2 que nos permiten registrar medidas eléctricas en tiempo real de 10 dispositivos más el agregado, y además en este caso tomaremos un tiempo extra de medidas (desde la 9:34 hasta las 13:36).
+Our goal is to provide NILM researchers with new data repositories to expand the existing range. As these new datasets can contain more than 150 electrical variables recorded at high frequency in different everyday applications, by offering this wide range of data, we hope to boost and improve NILM research.
 
-Esta fue la división del dataset:
+
+In this repository we use 3 OZM v2 units that allow us to record real time electrical measurements from 10 devices plus the aggregate, and also in this case we will take an extra time of measurements (from 9:34 to 13:36).
+
+
+This was the division of the dataset:
 
 -   train\*\*.**set_window(start**=\*\*"2023-06-09 09:34:00", end**=**"2023-06-09 10:54:00")
 -   test\*\*.**set_window(start**=\*\*"2023-06-09 12:55:00", end**=**"2023-06-09 13:36:00")
 -   valid\*\*.**set_window(start**=\*\*"2023-06-09 10:55:00", end**=**"2023-06-09 13:36:00")
 
-Estos datos se entrenaron, tanto con el algoritmo combinatorio (CO), como el algoritmo de Markov Oculto (FHMM), pero el algoritmo que mejores resultados devolvió es CO, dado que con FHMM ha sido imposible ejecutarlo con tiempos de sampling inferiores a 90segundos por falta de memoria física (incluso devolvió errores usando maquinas con más de 64GB de RAM).
+These data were trained with both the combinatorial algorithm (CO) and the Hidden Markov algorithm (FHMM), but the algorithm that returned the best results was CO, given that with FHMM it was impossible to run it with sampling times of less than 90 seconds due to a lack of physical memory (it even returned errors using machines with more than 64GB of RAM).
 
-La generación del Dataset se hizo con el nuevo convertidor/conversor diseñado para esta ocasión, partiendo de 11 ficheros csv de medidas que resultaron de unir cada fichero csv de cada aplicativo de cada día con el csv de ese mismo aplicativo y ese mismo día.
 
-**Recomendamos al lector se vaya al paso 8 de Métricas donde se pueden estudiar los resultados de esas métricas, que en principio parecían prometedoras pero se ha demostrado no mejoran los resultados frente a las métricas obtenidas contra el dataset formado por los datos de solo un día**.
+The generation of the Dataset was done with the new converter/converter designed for this occasion, starting from 11 csv files of measurements that resulted from joining each csv file of each application of each day with the csv of that same application and that same day.
 
-A continuación, se expone de forma genérica las conclusiones principales de tomar solo los armónicos impares, despreciando todos los armónicos, tomando todos ellos (pares e impares), o ampliando el tiempo de muestras.
+**We recommend the reader to go to step 8 of Metrics where you can study the results of these metrics, which in principle seemed promising but have been shown not to improve the results compared to the metrics obtained against the dataset formed by the data of only one day*.*.
 
-**ARQUITECTURA**
+The main conclusions of taking only the odd harmonics, disregarding all harmonics, taking all harmonics (odd and even), or extending the sample time are presented in a generic way below.
 
-Para el proceso de desagregación con los medidores inteligentes OZM V2 (versión trifásica del OZM) usaremos el Toolkit NILMTK, cuyo flujo podemos ver en la ilustración siguiente.
+**ARCHITECTURE**
+
+For the unbundling process with OZM V2 smart meters (three-phase version of OZM) we will use the NILMTK Toolkit, the flow of which can be seen in the illustration below.
 
 ![Diagrama Descripción generada automáticamente](media/ae003a4fce3933cef4ec0c557d516ceb.png)
 
 Figure 2-NILMTK flow diagram
 
-1.  **Generación de los nuevos DS**
+1. **Generation of the new DSs**.
 
-Los modelos presentados en este estudio emplean los registros de múltiples horas de funcionamiento de diversos dispositivos utilizando la API OZM, para lo cual usamos tres dispositivos OZM trifásicos con objeto de obtener 12 canales de medida reservando uno de estos para el agregado.
+
+The models presented in this study employ the multiple operating hour records of various devices using the OZM API, for which we use three three-phase OZM devices to obtain 12 measurement channels, reserving one of these for aggregation.
 
 ![Diagrama Descripción generada automáticamente](media/64ff0f26702e07a364d4358738a2d4d0.png)
 
 Figure 3 - Schematic diagram of OZM's connections with the applications.
 
-Los aplicativos usados en el experimento son los siguientes:
+The applications used in the experiment are the following:
+
 
 1 -Main
 
-2 - Electric Furnace (Horno)
 
-3- Microwave (Micro Onda)
+2 - Electric Furnace
+
+
+3- Microwave (Micro Wave)
+
 
 4 - Television
 
-5 - Bulb (bombilla)
 
-6 - Vacuum Cleaner (Aspiradora)
+5 - Bulb
 
-7- Electric Space Heater (Radiator de aceite)
 
-8 - Electric Shower Heater (Calentador de agua)
+6 - Vacuum Cleaner (Vacuum cleaner)
 
-9 - Fan (Ventilador)
 
-10 - Fridge (refrigerador)
+7 - Electric Space Heater (Oil Radiator)
 
-11 - Freezer (congelador)
 
-Los datos recolectados por los OZM’s se almacenan en archivos con 160 campos de datos. Sin embargo, no todos estos campos son relevantes en todas las fases de este estudio, por lo tanto, es necesario adaptarlos para su uso en NILMTK [1].
+8 - Electric Shower Heater (Water Heater)
 
-Como primer paso, se realizará un análisis preliminar de los archivos de datos o preprocesado de los datos, donde se descomprimirán todos los ficheros de medidas desde el formato *parquet* al formato csv, añadiendo una cabecera con los nombres de las medidas y sustituyendo los valores angulares de los armónicos por el módulo. Asimismo, se realiza un análisis de fechas y horas, dado que puede haber desfases en los tres campos de fechas devueltos por ozm (*FistTimestamp, OriginaTimestamp* y *Time*). Finalmente, para cada fichero csv se reorganizan las cabeceras y eliminan caracteres no deseados.
+
+9 - Fan
+
+
+10 - Fridge
+
+
+11 - Freezer
+
+The data collected by the OZMs are stored in files with 160 data fields. However, not all of these fields are relevant in all phases of this study, therefore, it is necessary to adapt them for use in NILMTK [1].
+
+
+As a first step, a preliminary analysis of the data files or pre-processing of the data will be performed, where all the measurement files will be decompressed from the *parquet* format to the csv format, adding a header with the names of the measurements and substituting the angular values of the harmonics by the module. Also, a date and time analysis is performed, since there may be mismatches in the three date fields returned by ozm(*FistTimestamp, OriginaTimestamp* and *Time*). Finally, for each csv file, the headers are reorganised and unwanted characters are removed.
 
 ![Interfaz de usuario gráfica, Texto, Aplicación Descripción generada automáticamente con confianza media](media/b6d729bf82d005c27e0f5052f1fd0315.png)
 
 Table 1- Different dates generated by oZM
 
-La siguiente tarea de carga y análisis de los datos, consiste principalmente en convertir los diferentes archivos de medidas preprocesados en la fase anterior junto a los metadatos, en un único archivo en formato HDF5, archivo que se almacenará en la carpeta de ejecución [2].
+The next task of loading and analysing the data consists mainly of converting the different measurement files preprocessed in the previous phase together with the metadata into a single file in HDF5 format, which will be stored in the run folder [2].
 
-Normalmente, NILMTK utiliza formatos estandarizados de DS, pero debido a la exclusividad de los datos proporcionados por OZM, se necesita un nuevo conversor para los datos. Para esto, se han creado un nuevo convertidor, así como una nueva función *convert_ualm* para cargar los ficheros de medidas en formato csv de los OZM al nuevo DS en formato H5. Para ello en el directorio de NILMTK de los convertidores, no solo se incluirá el nuevo código Python del convertidor (basado en el convertidor IAWE), sino que también se creará un subdirectorio en "/metadata/" que contendrán los archivos de metadatos en formato YAML. La Figura 4 muestra la configuración de todos los archivos necesarios para el nuevo convertidor, así como la estructura de directorios requerida.
+
+Normally, NILMTK uses standardised DS formats, but due to the exclusivity of the data provided by OZM, a new converter for the data is needed. For this, a new converter has been created, as well as a new function *convert_ualm* to load the measurement files in csv format from the OZM to the new DS in H5 format. For this purpose, in the NILMTK directory of the converters, not only the new Python code of the converter (based on the IAWE converter) will be included, but also a subdirectory will be created in "/metadata/" containing the metadata files in YAML format. Figure 4 shows the configuration of all the files needed for the new converter, as well as the required directory structure.
 
 ![](media/f0fc612321c8838d7279158e7cde4234.png)
 
