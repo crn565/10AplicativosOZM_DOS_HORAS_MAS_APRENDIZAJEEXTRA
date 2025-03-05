@@ -1,4 +1,6 @@
-**Measurements of 10 Applications with OZM v2 in two days**
+#
+# Measurements of 10 Applications with OZM v2 in two days**
+#
 
 This is the last repository of measurements using the new version of oVm v2 (three-phase version of oZM), whose tests began on 2023-03-07 and ended on 2023-06-09 at 13:36:19+02:00 in the Electrical Engineering Laboratory of the School of Industrial Engineering of the University of Almeria. In this repository, measurements with 3 three-phase ozm are analysed, making up a total of 10 applications plus the aggregate, all of these during 6 hours spread over two different days.
 
